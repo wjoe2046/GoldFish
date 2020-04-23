@@ -14,14 +14,15 @@ router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+router.get('/signout', usersControllers.signout);
+
 router.post('/login', usersControllers.verifyUser, (req, res) => {
-  res
-    .status(200)
-    .json({
-      username: res.locals.username,
-      userId: res.locals.userId,
-      success: true,
-    });
+  console.log(req.body);
+  res.status(200).json({
+    username: res.locals.username,
+    userId: res.locals.userId,
+    success: true,
+  });
 });
 
 //auth with google
